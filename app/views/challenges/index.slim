@@ -1,0 +1,68 @@
+= image_tag "logo_small.png", align: :right
+
+h1 📅 The 52 week ham radio challenge - #{APP_CONFIG.year} 📻
+
+p: strong Timeline:
+
+ul
+  li
+    | Challenges finalized: 
+    - if challenges_finalized = APP_CONFIG.challenges_finalized
+      | #{l(challenges_finalized, format: :long)} ☑️ 
+    - else
+      | TBD
+  li
+    | Bot online: 
+    - if bot_online = APP_CONFIG.bot_online
+      | #{l(bot_online, format: :long)} ☑️ 
+    - else
+      | TBD
+  li
+    strong
+      | Challenge launch: #{l(Date.parse("#{APP_CONFIG.year}-01-01"), format: :long)} ☑️
+
+hr
+
+p 52 weeks, 52 challenges. Can you master them all?
+
+ul
+  li This is meant to <strong>inspire you to extend your horizon</strong> in amateur radio by <strong>weekly challenges</strong> through the year that touch all aspects of ham radio (and related fields).
+  li A lot of the challenges may be trivial for some participants (because it is what they do all the time), but very challenging to others.
+  li Participants of the challenge are encouraged to help each other in any way possible. There's no cheating and you decide on your own success or failure.
+  li The challenges may be done in the suggested chronological order, or in any other way you like. For maximum synergy and fun in comparing how it's going, going chronologically is recommended!
+  li Participants are encouraged to post their progress, ideas, questions on <strong>Mastodon</strong> with the tag #hamchallenge. There is also an IRC channel: <a href="https://web.libera.chat/#hamchallenge">irc.libera.chat/#hamchallenge</a>
+  li You're encouraged to make use of your own equipment as much as possible, but it is perfectly OK to use borrowed equipment, or use WebSDRs/KiwiSDRs or other remote setups.
+  li Progress is tracked by mentioning the <a href="https://mas.to/@hamchallenge">@hamchallenge@mas.to</a> bot on Mastodon in your toots:
+  ul
+    li If you succeeded in a challenge, include <strong>HC<em>nn</em>S</strong> in your toot (where <em>nn</em> is the week). You will receive a point for the challenge.
+    li If you didn't succeed yet, you can still include <strong>HC<em>nn</em></strong> in your toot about the challenge, and it will be linked.
+  li Are you not on Mastodon yet? There are several instances dedicated to Amateur Radio. Go to <a href="https://fediverse.radio/">https://fediverse.radio/</a>, pick your favorite and sign up!
+
+h2= APP_CONFIG.year
+
+table
+  caption Challenges
+  thead
+    tr
+      th Week
+      th Type
+      th Difficulty
+      th Challenge
+      th Toots / Finished by
+  tbody
+    - @challenges.each do |challenge|
+      tr
+        td= challenge.week
+        td= category_emoji(challenge.category)
+        td= difficulty_emoji(challenge.difficulty)
+        td= challenge.summary
+        td
+          | 0 / 0
+
+p
+  | Credits (thanks for contributing): DF4OR, DC1MTS, G7KSE, DJ3EI, PA3DSB, DO8EW, DJ9AO, KB6NU, AF0AJ (Logo) and others.
+
+hr
+
+p
+  | A project by <a href="https://fkurz.net/">Fabian Kurz, DJ5CW</a> (<a href="https://social.darc.de/@DJ5CW">@dj5cw@social.darc.de</a>) - <? echo "Last modified: " . date ("l, d-M-Y H:i:s T", getlastmod()); ?>

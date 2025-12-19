@@ -1,0 +1,11 @@
+shared:
+  bot_online: 2025-12-12
+  challenges_finalized: 2025-12-01
+  year: 2026
+
+production:
+
+test:
+  challenges_finalized: 2004-12-31
+  bot_online: 2004-12-12
+  year: 2005
