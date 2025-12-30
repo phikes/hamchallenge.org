@@ -33,5 +33,5 @@ table#leaderboard
   tbody
     - @users.each do |((username, url), toot_count)|
       tr
-        td= link_to username, url, target: :blank, rel: "noopener noreferrer"
+        td= username
         td= toot_count
