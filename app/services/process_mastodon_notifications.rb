@@ -6,19 +6,25 @@ class ProcessMastodonNotifications < ApplicationService
 
   def call
     client.notifications.each do |notification|
+      Rails.logger.info "Processing notification: #{notification.inspect}"
       next unless notification.type == "mention"
 
+      Rails.logger.info "Notification type is mention, continuing"
       hc_match = notification.status.content.match HC_REGEX
       next unless hc_match.present?
 
+      Rails.logger.info "Matched the HCnnS? token: #{hc_match.inspect}"
       week = hc_match[:week].to_i
       next unless week.in? 1..52
 
+      Rails.logger.info "Parsed week: #{week}"
       success = hc_match[:success].present?
 
+      Rails.logger.info "Parsed success flag: #{success}"
       challenge = Challenge.find_by(year: APP_CONFIG.year, week:)
       next unless challenge
 
+      Rails.logger.info "Found matching challenge: #{challenge.inspect}"
       toot = challenge.toots.find_or_initialize_by username: strip_tags(notification.account.acct), url: strip_tags(notification.status.url)
       toot.assign_attributes completed: success,
         direct: notification.status.visibility == "direct",
@@ -26,7 +32,11 @@ class ProcessMastodonNotifications < ApplicationService
         summary: strip_tags(notification.status.content)
       toot.save!
 
+      Rails.logger.info "Saved toot: #{toot.inspect}"
+
       client.dismiss_notification notification.id
+    rescue e
+      Rails.logger.warn "Caught error: #{e.inspect}"
     end
   end
 
