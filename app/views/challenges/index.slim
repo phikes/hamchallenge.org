@@ -1,3 +1,5 @@
+h3 Challenges
+
 table#challenges
   caption Challenges
   thead
@@ -18,4 +20,18 @@ table#challenges
             summary= challenge.summary
             = challenge.description
         td
-          | #{challenge.toots.count} / #{challenge.toots.completed.count}
+          | #{@toot_counts[challenge.id] || 0} / #{@completed_toot_counts[challenge.id] || 0}
+
+h3 Leaderboard
+
+table#leaderboard
+  caption Leaderboard
+  thead
+    tr
+      th User
+      th Challenges Finished
+  tbody
+    - @users.each do |((username, url), toot_count)|
+      tr
+        td= link_to username, url, target: :blank, rel: "noopener noreferrer"
+        td= toot_count
