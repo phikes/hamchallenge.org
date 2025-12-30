@@ -9,7 +9,7 @@ class ProcessMastodonNotifications < ApplicationService
       next unless notification.type == "mention"
 
       hc_match = notification.status.content.match HC_REGEX
-      next unless hc_match && hc_match
+      next unless hc_match.present?
 
       week = hc_match[:week].to_i
       next unless week.in? 1..52
