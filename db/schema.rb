@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_18_193958) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_21_105628) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,4 +24,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_18_193958) do
     t.integer "week", null: false
     t.integer "year", null: false
   end
+
+  create_table "toots", force: :cascade do |t|
+    t.bigint "challenge_id", null: false
+    t.boolean "completed", null: false
+    t.datetime "created_at", null: false
+    t.boolean "direct", null: false
+    t.text "summary", null: false
+    t.datetime "updated_at", null: false
+    t.string "url", null: false
+    t.string "username", null: false
+    t.index ["challenge_id"], name: "index_toots_on_challenge_id"
+  end
+
+  add_foreign_key "toots", "challenges"
 end

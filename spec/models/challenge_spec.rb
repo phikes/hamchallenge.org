@@ -13,4 +13,6 @@ RSpec.describe Challenge, type: :model do
 
   it { is_expected.to define_enum_for(:category).with_values fun: 0, radio: 1, computer: 2, social: 3, homebrew: 4 }
   it { is_expected.to define_enum_for(:difficulty).with_values easy: 0, medium: 1, hard: 2 }
+
+  it { is_expected.to have_many(:toots).dependent :destroy }
 end
