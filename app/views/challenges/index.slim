@@ -55,7 +55,10 @@ table
         td= challenge.week
         td= category_emoji(challenge.category)
         td= difficulty_emoji(challenge.difficulty)
-        td= challenge.summary
+        td
+          details
+            summary= challenge.summary
+            = challenge.description
         td
           | 0 / 0
 
