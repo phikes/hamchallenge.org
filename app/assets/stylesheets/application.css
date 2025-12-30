@@ -8,3 +8,74 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+body,td{font-family:Quicksand,Ubuntu,calibri,tahoma,arial,sans-serif; font-size: 14px}
+ul {
+  margin-top: 3px; 
+  margin-bottom: 3px; 
+
+}
+dt {
+  font-weight: bold;
+
+}
+dd {
+  margin-bottom: 0.5em; 
+
+}
+.slim {
+  /* width:650px */
+  max-width: 50em;
+
+}
+img { border: 0;  }
+table {
+  vertical-align: text-top;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+
+}
+table th {
+  vertical-align: text-top;
+  background-color: #aabbff;
+
+}      
+table td {
+  vertical-align: text-top;
+  padding-right: 6px;
+  padding-left: 6px;
+  max-width: 650px;
+
+}
+summary {
+  background-color: #ffffff;
+
+}
+details {
+  background-color: #f0eeee;
+
+}
+.grey { background-color: #eeeeee;  }
+.navself {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000000;
+
+}
+
+h1 {
+  margin-bottom: 3ch;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+.challenge-list {
+  margin-bottom: 5ch;
+}
+
+table caption {
+  display: none; // only for tests, don't rely on this for screenreaders
+}

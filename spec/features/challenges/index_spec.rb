@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Challenges index", type: :feature do
   it "shows the challenges" do
-    FactoryBot.create :challenge, week: 1, year: 2005, summary: "Do something fun!", difficulty: :easy, category: "fun"
-    FactoryBot.create :challenge, week: 2, year: 2005, summary: "Do something social!", difficulty: :medium, category: "social"
-    FactoryBot.create :challenge, week: 3, year: 2005, summary: "Do something with your computer!", difficulty: :hard, category: "computer"
-    FactoryBot.create :challenge, week: 4, year: 2005, summary: "Make something!", difficulty: :easy, category: "homebrew"
-    FactoryBot.create :challenge, week: 5, year: 2005, summary: "Do something with your radio!", difficulty: :easy, category: "radio"
+    FactoryBot.create :challenge, week: 1, year: 2005, summary: "Do something fun!", description: "SOMETHING FUN", difficulty: :easy, category: "fun"
+    FactoryBot.create :challenge, week: 2, year: 2005, summary: "Do something social!", description: "SOMETHING SOCIAL", difficulty: :medium, category: "social"
+    FactoryBot.create :challenge, week: 3, year: 2005, summary: "Do something with your computer!", description: "SOMETHING COMPUTER", difficulty: :hard, category: "computer"
+    FactoryBot.create :challenge, week: 4, year: 2005, summary: "Make something!", description: "SOMETHING SOMETHING", difficulty: :easy, category: "homebrew"
+    FactoryBot.create :challenge, week: 5, year: 2005, summary: "Do something with your radio!", description: "SOMETHING RADIO", difficulty: :easy, category: "radio"
 
     visit "/"
 

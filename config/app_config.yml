@@ -1,9 +1,38 @@
 shared:
   bot_online: 2025-12-12
   challenges_finalized: 2025-12-01
+  contributors:
+    - AF0AJ (Logo) 
+    - DB7GKA
+    - DC0IT/9A5RAY
+    - DC1MTS
+    - DF1CN
+    - DF4OR
+    - DF7CB
+    - DJ3EI
+    - DJ9AO
+    - DK1BOU
+    - DK4HAA
+    - DL6PL
+    - DL7LW
+    - DL8ROB
+    - DL9CE
+    - DM5WK
+    - DM6SB
+    - DO4MR
+    - DO7JZ
+    - DO7PX
+    - DO8EW
+    - G7KSE
+    - KB6NU
+    - PA3DSB
+    - Willi
   year: 2026
 
 production:
+  challenges_finalized: 2025-12-30
+  bot_online: 2025-12-30
+  year: 2005
 
 test:
   challenges_finalized: 2004-12-31
