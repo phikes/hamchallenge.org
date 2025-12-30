@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :challenge do
-    year { 1 }
+    year { 2005 }
     week { 1 }
-    category { 1 }
-    difficulty { 1 }
-    summary { "MyText" }
-    description { "MyText" }
+    category { "fun" }
+    difficulty { "easy" }
+    summary { "Do something!" }
+    description { "Here are some instructions" }
   end
 end
