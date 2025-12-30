@@ -16,6 +16,7 @@ class TootDashboard < Administrate::BaseDashboard
     url: Field::String,
     username: Field::String,
     created_at: Field::DateTime,
+    status_created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
 
@@ -42,6 +43,7 @@ class TootDashboard < Administrate::BaseDashboard
     url
     username
     created_at
+    status_created_at
     updated_at
   ].freeze
 
