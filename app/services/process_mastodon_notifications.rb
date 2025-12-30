@@ -26,7 +26,7 @@ class ProcessMastodonNotifications < ApplicationService
         summary: strip_tags(notification.status.content)
       toot.save!
 
-      client.dismiss_notification notification.id if notification.type == "mention"
+      client.dismiss_notification notification.id
     end
   end
 
