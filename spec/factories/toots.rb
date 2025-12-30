@@ -5,6 +5,7 @@ FactoryBot.define do
     direct { false }
     username { "phikes" }
     url { "https://mastodon.social/posts/#{(1..10_000).to_a.sample}" }
+    status_created_at { Time.zone.now }
     summary { "I did it! Very nice <3" }
   end
 end

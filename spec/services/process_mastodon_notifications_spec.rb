@@ -51,6 +51,7 @@ RSpec.describe ProcessMastodonNotifications do
           "type" => "mention",
           "status" => {
             "content" => "I am trying! HC52",
+            "created_at" => "2025-01-22T13:00Z",
             "id" => "123",
             "url" => "https://mas.to/posts/123",
             "visibility" => "direct"
@@ -67,6 +68,7 @@ RSpec.describe ProcessMastodonNotifications do
         Toot.where(
           completed: false,
           direct: true,
+          status_created_at: "2025-01-22T13:00Z",
           summary: "I am trying! HC52",
           url: "https://mas.to/posts/123",
           username: "@phikes"
@@ -84,6 +86,7 @@ RSpec.describe ProcessMastodonNotifications do
           "type" => "mention",
           "status" => {
             "content" => "I did it! HC05S",
+            "created_at" => "2025-01-22T13:00Z",
             "id" => "123",
             "url" => "https://mas.to/posts/123"
           },
@@ -99,6 +102,7 @@ RSpec.describe ProcessMastodonNotifications do
         Toot.where(
           completed: true,
           direct: false,
+          status_created_at: "2025-01-22T13:00Z",
           summary: "I did it! HC05S",
           url: "https://mas.to/posts/123",
           username: "@phikes"
@@ -116,6 +120,7 @@ RSpec.describe ProcessMastodonNotifications do
           "type" => "mention",
           "status" => {
             "content" => "I did it! HC24S",
+            "created_at" => "2025-01-22T13:00Z",
             "id" => "123",
             "url" => "https://mas.to/posts/123"
           },
@@ -131,6 +136,7 @@ RSpec.describe ProcessMastodonNotifications do
         Toot.where(
           completed: true,
           direct: false,
+          status_created_at: "2025-01-22T13:00Z",
           summary: "I did it! HC24S",
           url: "https://mas.to/posts/123",
           username: "@phikes"
@@ -150,6 +156,7 @@ RSpec.describe ProcessMastodonNotifications do
           "type" => "mention",
           "status" => {
             "content" => "I did it! HC24S",
+            "created_at" => "2025-01-22T13:00Z",
             "id" => "123",
             "url" => "https://mas.to/posts/123"
           },
@@ -165,6 +172,7 @@ RSpec.describe ProcessMastodonNotifications do
         Toot.where(
           completed: true,
           direct: false,
+          status_created_at: "2025-01-22T13:00Z",
           summary: "I did it! HC24S",
           url: "https://mas.to/posts/123",
           username: "@phikes"

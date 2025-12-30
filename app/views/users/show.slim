@@ -11,7 +11,7 @@ table#toots
   tbody
     - @toots.each do |toot|
       tr
-        td #{l toot.created_at, format: :long} UTC
+        td #{l toot.status_created_at, format: :long} UTC
         td= link_to toot.challenge.week, challenge_toots_path(toot.challenge)
         td
           - if toot.completed

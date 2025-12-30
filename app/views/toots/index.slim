@@ -21,7 +21,7 @@ table#toots
   tbody
     - @toots.each do |toot|
       tr
-        td #{l toot.created_at, format: :long} UTC
+        td #{l toot.status_created_at, format: :long} UTC
         td= link_to toot.username, user_path(toot.username)
         td= @user_scores[toot.username] || 0
         td

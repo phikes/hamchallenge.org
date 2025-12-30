@@ -8,6 +8,7 @@ RSpec.describe Toot, type: :model do
   it { is_expected.to have_db_column(:username).of_type(:string).with_options null: false }
   it { is_expected.to have_db_column(:url).of_type(:string).with_options null: false }
   it { is_expected.to have_db_column(:summary).of_type(:text).with_options null: false }
+  it { is_expected.to have_db_column(:status_created_at).of_type(:datetime).with_options null: false }
 
   it { is_expected.to have_db_index(%i[challenge_id url]).unique }
 

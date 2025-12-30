@@ -4,11 +4,11 @@ RSpec.describe "Toots index", type: :feature do
   let(:challenge) { FactoryBot.create :challenge, week: 1 }
 
   it "shows the toots" do
-    FactoryBot.create :toot, challenge: FactoryBot.create(:challenge, year: 2003), completed: true, summary: "DONE!", created_at: "2005-01-04T10:00:00Z", username: "phil"
-    FactoryBot.create :toot, challenge:, completed: true, summary: "DONE!", created_at: "2005-01-04T10:00:00Z", username: "phil"
-    FactoryBot.create :toot, challenge:, completed: true, summary: "DONE AGAIN!", created_at: "2005-01-04T10:00:00Z", username: "phil"
+    FactoryBot.create :toot, challenge: FactoryBot.create(:challenge, year: 2003), completed: true, summary: "DONE!", status_created_at: "2005-01-04T10:00:00Z", username: "phil"
+    FactoryBot.create :toot, challenge:, completed: true, summary: "DONE!", status_created_at: "2005-01-04T10:00:00Z", username: "phil"
+    FactoryBot.create :toot, challenge:, completed: true, summary: "DONE AGAIN!", status_created_at: "2005-01-04T10:00:00Z", username: "phil"
     FactoryBot.create :toot, completed: true, username: "phil"
-    FactoryBot.create :toot, challenge:, summary: "Not yet", created_at: "2005-01-05T11:22:00Z", username: "fabian"
+    FactoryBot.create :toot, challenge:, summary: "Not yet", status_created_at: "2005-01-05T11:22:00Z", username: "fabian"
 
     visit "/challenges/#{challenge.id}/toots"
 

@@ -6,21 +6,21 @@ RSpec.describe "Users show", type: :feature do
     FactoryBot.create :toot,
       completed: false,
       username: "phikes",
-      created_at: "2005-01-04T09:00Z",
+      status_created_at: "2005-01-04T09:00Z",
       challenge:
   end
   let!(:progress_toot) do
     FactoryBot.create :toot,
       completed: false,
       username: "phikes",
-      created_at: "2005-01-05T09:00Z",
+      status_created_at: "2005-01-05T09:00Z",
       challenge: FactoryBot.create(:challenge, week: 2)
   end
   let!(:completed_toot) do
     FactoryBot.create :toot,
       completed: true,
       username: "phikes",
-      created_at: "2005-01-04T10:00Z",
+      status_created_at: "2005-01-04T10:00Z",
       challenge:
   end
 
