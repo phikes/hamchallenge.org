@@ -66,14 +66,14 @@ RSpec.describe "Challenges index", type: :feature do
       }
     ]
 
-    expect(page).to have_table :leaderboard, with_rows: [
+    expect(page).to have_table :leaderboard, exact: true, with_rows: [
       {
         "User" => "phikes",
-        "Challenges Finished" => 2
+        "User Score" => 2
       },
       {
         "User" => "second_user",
-        "Challenges Finished" => 1
+        "User Score" => 1
       }
     ]
   end

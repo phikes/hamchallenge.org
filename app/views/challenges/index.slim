@@ -55,8 +55,8 @@ table#challenges
     - @challenges.each do |challenge|
       tr
         td= challenge.week
-        td= category_emoji(challenge.category)
-        td= difficulty_emoji(challenge.difficulty)
+        td: span[aria-label=challenge.category]= category_emoji(challenge.category)
+        td: span[aria-label=challenge.difficulty]= difficulty_emoji(challenge.difficulty)
         td
           details
             summary= challenge.summary
