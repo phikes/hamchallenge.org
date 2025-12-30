@@ -6,7 +6,7 @@ class CreateChallenges < ActiveRecord::Migration[8.1]
       t.integer :category, null: false
       t.integer :difficulty, null: false
       t.text :summary, null: false
-      t.text :description
+      t.text :description, null: false
 
       t.timestamps
     end

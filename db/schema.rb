@@ -17,7 +17,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_21_105628) do
   create_table "challenges", force: :cascade do |t|
     t.integer "category", null: false
     t.datetime "created_at", null: false
-    t.text "description"
+    t.text "description", null: false
     t.integer "difficulty", null: false
     t.text "summary", null: false
     t.datetime "updated_at", null: false
