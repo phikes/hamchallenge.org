@@ -2,9 +2,16 @@ require "rails_helper"
 
 RSpec.describe "Challenges index", type: :feature do
   it "shows the challenges" do
+    # this one doesn't count towards anything on the page as its in another year
+    FactoryBot.create(:challenge, week: 1, year: 2003).tap do |challenge|
+      FactoryBot.create(:toot, challenge:, username: "none_user")
+      FactoryBot.create :toot, challenge:, completed: true
+      FactoryBot.create :toot, challenge:, completed: true
+    end
     FactoryBot.create(:challenge, week: 1, year: 2005, summary: "Do something fun!", description: "SOMETHING FUN", difficulty: :easy, category: "fun").tap do |challenge|
       FactoryBot.create(:toot, challenge:, username: "none_user")
       FactoryBot.create :toot, challenge:, completed: true
+      FactoryBot.create :toot, challenge:, completed: true # don't count this twice in finished by / leaderboard
     end
     FactoryBot.create(:challenge, week: 2, year: 2005, summary: "Do something social!", description: "SOMETHING SOCIAL", difficulty: :medium, category: "social").tap do |challenge|
       FactoryBot.create :toot, challenge:, completed: true
@@ -27,7 +34,7 @@ RSpec.describe "Challenges index", type: :feature do
         "Type" => "😂",
         "Difficulty" => "🟢",
         "Challenge" => "Do something fun!",
-        "Toots / Finished by" => "2 / 1"
+        "Toots / Finished by" => "3 / 1"
       },
       {
         "Week" => 2,

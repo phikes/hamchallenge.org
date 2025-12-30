@@ -10,7 +10,7 @@ class CreateToots < ActiveRecord::Migration[8.1]
 
       t.timestamps
 
-      t.index %i[username challenge_id], unique: true
+      t.index %i[challenge_id url], unique: true
     end
   end
 end

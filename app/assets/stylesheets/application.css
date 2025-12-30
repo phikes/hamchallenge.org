@@ -24,7 +24,6 @@ dd {
 
 }
 .slim {
-  /* width:650px */
   max-width: 50em;
 
 }
@@ -36,12 +35,14 @@ table {
   border-style: solid;
 
 }
-table th {
+table th, table .th {
   vertical-align: text-top;
   background-color: #aabbff;
+  text-align: center;
+  font-weight: bold;
 
 }      
-table td {
+table td:not(.th) {
   vertical-align: text-top;
   padding-right: 6px;
   padding-left: 6px;

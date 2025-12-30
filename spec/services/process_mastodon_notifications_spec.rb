@@ -107,7 +107,7 @@ RSpec.describe ProcessMastodonNotifications do
       )
     end
 
-    it "updates toots" do
+    it "creates multiple toots per mention" do
       toot = FactoryBot.create :toot, challenge: FactoryBot.create(:challenge, week: 24), username: "@phikes"
 
       allow(client).to receive(:notifications).and_return [
@@ -127,8 +127,52 @@ RSpec.describe ProcessMastodonNotifications do
       ]
       allow(client).to receive(:dismiss_notification).with "123"
 
-      expect { described_class.call bearer_token: "very_secret_token" }.not_to change(Toot, :count)
-      expect(toot.reload).to have_attributes completed: true, direct: false, summary: "I did it! HC24S", url: "https://mas.to/posts/123"
+      expect { described_class.call bearer_token: "very_secret_token" }.to change(
+        Toot.where(
+          completed: true,
+          direct: false,
+          summary: "I did it! HC24S",
+          url: "https://mas.to/posts/123",
+          username: "@phikes"
+        ),
+        :count
+      )
+
+      expect(Toot.count).to eq 2
+    end
+
+    it "updates a toot if the post is the same" do
+      toot = FactoryBot.create :toot, challenge: FactoryBot.create(:challenge, week: 24), username: "@phikes", url: "https://mas.to/posts/123"
+
+      allow(client).to receive(:notifications).and_return [
+        Mastodon::Notification.new(
+          "id" => "123",
+          "type" => "mention",
+          "status" => {
+            "content" => "I did it! HC24S",
+            "id" => "123",
+            "url" => "https://mas.to/posts/123"
+          },
+          "account" => {
+            "id" => "123",
+            "acct" => "<a href=\"https://mas.to/@phikes\">@phikes</a>"
+          }
+        )
+      ]
+      allow(client).to receive(:dismiss_notification).with "123"
+
+      expect { described_class.call bearer_token: "very_secret_token" }.to change(
+        Toot.where(
+          completed: true,
+          direct: false,
+          summary: "I did it! HC24S",
+          url: "https://mas.to/posts/123",
+          username: "@phikes"
+        ),
+        :count
+      )
+
+      expect(Toot.count).to eq 1
     end
   end
 end

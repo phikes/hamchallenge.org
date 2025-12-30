@@ -9,7 +9,7 @@ RSpec.describe Toot, type: :model do
   it { is_expected.to have_db_column(:url).of_type(:string).with_options null: false }
   it { is_expected.to have_db_column(:summary).of_type(:text).with_options null: false }
 
-  it { is_expected.to have_db_index(%i[username challenge_id]).unique }
+  it { is_expected.to have_db_index(%i[challenge_id url]).unique }
 
   describe "::completed" do
     subject { described_class.completed }

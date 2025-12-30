@@ -20,6 +20,8 @@ gem "mastodon-api", github: "dbreunig/mastodon-api", require: "mastodon"
 
 gem "redcarpet"
 
+gem "activerecord_where_assoc", "~> 1.0"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -75,6 +77,5 @@ group :test do
   gem "selenium-webdriver"
 
   gem "nyan-cat-formatter"
-  gem "rspec-its"
   gem "shoulda-matchers"
 end

@@ -24,4 +24,26 @@ module ChallengesHelper
       "🔴"
     end
   end
+
+  def status_emoji(status)
+    case status
+    when "completed"
+      "✅"
+    when "in_progress"
+      "🚧"
+    else
+      "⌛"
+    end
+  end
+
+  def status_label(status)
+    case status
+    when "completed"
+      "Completed"
+    when "in_progress"
+      "In progress"
+    else
+      "Not started"
+    end
+  end
 end
