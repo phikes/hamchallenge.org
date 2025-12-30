@@ -18,4 +18,4 @@ table#challenges
             summary= challenge.summary
             = challenge.description
         td
-          | 0 / 0
+          | #{challenge.toots.count} / #{challenge.toots.completed.count}
