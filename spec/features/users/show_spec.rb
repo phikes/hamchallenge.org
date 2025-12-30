@@ -5,21 +5,21 @@ RSpec.describe "Users show", type: :feature do
   let!(:progress_completed_toot) do
     FactoryBot.create :toot,
       completed: false,
-      username: "phikes",
+      username: "phikes.social",
       status_created_at: "2005-01-04T09:00Z",
       challenge:
   end
   let!(:progress_toot) do
     FactoryBot.create :toot,
       completed: false,
-      username: "phikes",
+      username: "phikes.social",
       status_created_at: "2005-01-05T09:00Z",
       challenge: FactoryBot.create(:challenge, week: 2)
   end
   let!(:completed_toot) do
     FactoryBot.create :toot,
       completed: true,
-      username: "phikes",
+      username: "phikes.social",
       status_created_at: "2005-01-04T10:00Z",
       challenge:
   end
@@ -30,12 +30,12 @@ RSpec.describe "Users show", type: :feature do
     FactoryBot.create(
       :toot,
       completed: true,
-      username: "phikes",
+      username: "phikes.social",
       challenge:
     ) # make sure this doesn't get counted multiple times!
-    visit "/users/phikes"
+    visit "/users/phikes.social"
 
-    expect(page).to have_text "52 Week Ham Radio Challenge 2005 - Status for phikes"
+    expect(page).to have_text "52 Week Ham Radio Challenge 2005 - Status for phikes.social"
     expect(page).to have_table :toots, with_rows: [
       {"Date" => "January 04, 2005 09:00 UTC", "Challenge" => "1", "Status" => "Progress update...", "Toot Summary & Link" => progress_completed_toot.summary},
       {"Date" => "January 04, 2005 10:00 UTC", "Challenge" => "1", "Status" => "Success!", "Toot Summary & Link" => completed_toot.summary},
