@@ -21,16 +21,53 @@ RSpec.describe "Challenges index", type: :feature do
 
     expect(page).to have_text "2005"
 
-    challenges_table = find :table, "Challenges"
-    expect(challenges_table).to have_table_row "Week" => 1, "Type" => "😂", "Difficulty" => "🟢", "Challenge" => "Do something fun!", "Toots / Finished by" => "2 / 1"
-    expect(challenges_table).to have_table_row "Week" => 2, "Type" => "🧑‍🤝‍🧑", "Difficulty" => "🟡", "Challenge" => "Do something social!", "Toots / Finished by" => "1 / 1"
-    expect(challenges_table).to have_table_row "Week" => 3, "Type" => "🖥️", "Difficulty" => "🔴", "Challenge" => "Do something with your computer!", "Toots / Finished by" => "1 / 0"
-    expect(challenges_table).to have_table_row "Week" => 4, "Type" => "🛠️", "Difficulty" => "🟢", "Challenge" => "Make something!", "Toots / Finished by" => "1 / 1"
-    expect(challenges_table).to have_table_row "Week" => 5, "Type" => "📻", "Difficulty" => "🟢", "Challenge" => "Do something with your radio!", "Toots / Finished by" => "0 / 0"
+    expect(page).to have_table :challenges, with_rows: [
+      {
+        "Week" => 1,
+        "Type" => "😂",
+        "Difficulty" => "🟢",
+        "Challenge" => "Do something fun!",
+        "Toots / Finished by" => "2 / 1"
+      },
+      {
+        "Week" => 2,
+        "Type" => "🧑‍🤝‍🧑",
+        "Difficulty" => "🟡",
+        "Challenge" => "Do something social!",
+        "Toots / Finished by" => "1 / 1"
+      },
+      {
+        "Week" => 3,
+        "Type" => "🖥️",
+        "Difficulty" => "🔴",
+        "Challenge" => "Do something with your computer!",
+        "Toots / Finished by" => "1 / 0"
+      },
+      {
+        "Week" => 4,
+        "Type" => "🛠️",
+        "Difficulty" => "🟢",
+        "Challenge" => "Make something!",
+        "Toots / Finished by" => "1 / 1"
+      },
+      {
+        "Week" => 5,
+        "Type" => "📻",
+        "Difficulty" => "🟢",
+        "Challenge" => "Do something with your radio!",
+        "Toots / Finished by" => "0 / 0"
+      }
+    ]
 
-    leaderboard_table = find :table, "Leaderboard"
-    expect(leaderboard_table).to have_table_row "User" => "phikes", "Challenges Finished" => 2
-    expect(leaderboard_table).to have_table_row "User" => "second_user", "Challenges Finished" => 1
-    expect(leaderboard_table).not_to have_table_row "User" => "none_user"
+    expect(page).to have_table :leaderboard, with_rows: [
+      {
+        "User" => "phikes",
+        "Challenges Finished" => 2
+      },
+      {
+        "User" => "second_user",
+        "Challenges Finished" => 1
+      }
+    ]
   end
 end

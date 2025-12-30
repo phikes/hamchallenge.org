@@ -64,18 +64,6 @@ details {
 
 }
 
-h1 {
-  margin-bottom: 3ch;
-}
-
-h2 {
+h2.big-heading {
   font-size: 2em;
-}
-
-.challenge-list {
-  margin-bottom: 5ch;
-}
-
-table caption {
-  display: none; // only for tests, don't rely on this for screenreaders
 }

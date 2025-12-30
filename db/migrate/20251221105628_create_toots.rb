@@ -9,6 +9,8 @@ class CreateToots < ActiveRecord::Migration[8.1]
       t.text :summary, null: false
 
       t.timestamps
+
+      t.index %i[username challenge_id], unique: true
     end
   end
 end

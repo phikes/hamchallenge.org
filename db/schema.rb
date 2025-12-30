@@ -35,6 +35,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_21_105628) do
     t.string "url", null: false
     t.string "username", null: false
     t.index ["challenge_id"], name: "index_toots_on_challenge_id"
+    t.index ["username", "challenge_id"], name: "index_toots_on_username_and_challenge_id", unique: true
   end
 
   add_foreign_key "toots", "challenges"

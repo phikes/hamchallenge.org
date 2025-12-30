@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   namespace :admin do
-      resources :challenges
-      resources :toots
+    resources :challenges
+    resources :toots
 
-      root to: "challenges#index"
-    end
+    root to: "challenges#index"
+  end
+
+  resources :challenges, only: [] do
+    resources :toots, only: %i[index]
+  end
+
+  resources :users, only: %i[show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
