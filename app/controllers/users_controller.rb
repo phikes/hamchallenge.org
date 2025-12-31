@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
-  WEEKS_BY_MONTH = (1..52).each_with_object({}) do |week, months|
+  class << self
+    def weeks_count(year)
+      last_day = Date.new(year).end_of_year
+
+      if last_day.cweek == 1
+        last_day.prev_week.cweek
+      else
+        last_day.cweek
+      end
+    end
+  end
+
+  WEEKS_BY_MONTH = (1..weeks_count(APP_CONFIG.year)).each_with_object({}) do |week, months|
     beginning_of_week = Date.commercial APP_CONFIG.year, week, 1
     end_of_week = Date.commercial APP_CONFIG.year, week, 7
 
