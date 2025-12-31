@@ -30,8 +30,8 @@ shared:
   year: 2026
 
 production:
-  challenges_finalized: 2025-12-30
-  bot_online: 2025-12-30
+  challenges_finalized: 2025-12-31 (in progress)
+  bot_online: 2025-12-31
   year: 2026
 
 test:
