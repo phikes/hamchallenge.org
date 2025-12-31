@@ -6,6 +6,8 @@ class ProcessMastodonNotifications < ApplicationService
 
   def call
     client.notifications.each do |notification|
+      client.dismiss_notification notification.id
+
       Rails.logger.info "Processing notification: #{notification.inspect}"
       next unless notification.type == "mention"
 
@@ -33,9 +35,7 @@ class ProcessMastodonNotifications < ApplicationService
       toot.save!
 
       Rails.logger.info "Saved toot: #{toot.inspect}"
-
-      client.dismiss_notification notification.id
-    rescue e
+    rescue StandardError => e
       Rails.logger.warn "Caught error: #{e.inspect}"
     end
   end

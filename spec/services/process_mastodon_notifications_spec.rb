@@ -2,7 +2,10 @@ require "rails_helper"
 
 RSpec.describe ProcessMastodonNotifications do
   describe "#call" do
-    before { allow(Mastodon::REST::Client).to receive(:new).and_return client }
+    before do
+      allow(Mastodon::REST::Client).to receive(:new).and_return client
+      allow(client).to receive :dismiss_notification
+    end
 
     let(:client) { instance_double Mastodon::REST::Client }
 
@@ -25,6 +28,7 @@ RSpec.describe ProcessMastodonNotifications do
       ]
 
       expect { described_class.call bearer_token: "very_secret_token" }.not_to change(Toot, :count)
+      expect(client).to have_received(:dismiss_notification).with "123"
     end
 
     it "only takes into account mentions with a valid week" do
@@ -40,6 +44,7 @@ RSpec.describe ProcessMastodonNotifications do
       ]
 
       expect { described_class.call bearer_token: "very_secret_token" }.not_to change(Toot, :count)
+      expect(client).to have_received(:dismiss_notification).with "123"
     end
 
     it "parses toots without success" do
@@ -62,7 +67,6 @@ RSpec.describe ProcessMastodonNotifications do
           }
         )
       ]
-      allow(client).to receive(:dismiss_notification).with "123"
 
       expect { described_class.call bearer_token: "very_secret_token" }.to change(
         Toot.where(
@@ -75,6 +79,7 @@ RSpec.describe ProcessMastodonNotifications do
         ),
         :count
       )
+      expect(client).to have_received(:dismiss_notification).with "123"
     end
 
     it "parses toots with success" do
@@ -96,7 +101,6 @@ RSpec.describe ProcessMastodonNotifications do
           }
         )
       ]
-      allow(client).to receive(:dismiss_notification).with "123"
 
       expect { described_class.call bearer_token: "very_secret_token" }.to change(
         Toot.where(
@@ -109,6 +113,7 @@ RSpec.describe ProcessMastodonNotifications do
         ),
         :count
       )
+      expect(client).to have_received(:dismiss_notification).with "123"
     end
 
     it "creates multiple toots per mention" do
@@ -130,7 +135,6 @@ RSpec.describe ProcessMastodonNotifications do
           }
         )
       ]
-      allow(client).to receive(:dismiss_notification).with "123"
 
       expect { described_class.call bearer_token: "very_secret_token" }.to change(
         Toot.where(
@@ -145,6 +149,7 @@ RSpec.describe ProcessMastodonNotifications do
       )
 
       expect(Toot.count).to eq 2
+      expect(client).to have_received(:dismiss_notification).with "123"
     end
 
     it "updates a toot if the post is the same" do
@@ -166,7 +171,6 @@ RSpec.describe ProcessMastodonNotifications do
           }
         )
       ]
-      allow(client).to receive(:dismiss_notification).with "123"
 
       expect { described_class.call bearer_token: "very_secret_token" }.to change(
         Toot.where(
@@ -181,6 +185,7 @@ RSpec.describe ProcessMastodonNotifications do
       )
 
       expect(Toot.count).to eq 1
+      expect(client).to have_received(:dismiss_notification).with "123"
     end
   end
 end
