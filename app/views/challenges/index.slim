@@ -7,13 +7,13 @@ p: strong Timeline:
 ul
   li
     | Challenges finalized: 
-    - if challenges_finalized = APP_CONFIG.challenges_finalized
+    - if challenges_finalized = APP_CONFIG.challenges_finalized.present?
       | #{l(challenges_finalized, format: :long)} ☑️ 
     - else
       | TBD
   li
     | Bot online: 
-    - if bot_online = APP_CONFIG.bot_online
+    - if bot_online = APP_CONFIG.bot_online.present?
       | #{l(bot_online, format: :long)} ☑️ 
     - else
       | TBD
