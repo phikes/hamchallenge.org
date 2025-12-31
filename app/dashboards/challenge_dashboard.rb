@@ -27,8 +27,8 @@ class ChallengeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    summary
     category
-    description
     difficulty
   ].freeze
 
