@@ -19,7 +19,7 @@ module ChallengesHelper
     when "easy"
       "🟢"
     when "medium"
-      "🟡"
+      "🟠"
     when "hard"
       "🔴"
     end

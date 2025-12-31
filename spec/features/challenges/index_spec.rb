@@ -39,7 +39,7 @@ RSpec.describe "Challenges index", type: :feature do
       {
         "Week" => 2,
         "Type" => "🧑‍🤝‍🧑",
-        "Difficulty" => "🟡",
+        "Difficulty" => "🟠",
         "Challenge" => "Do something social!",
         "Toots / Finished by" => "1 / 1"
       },
